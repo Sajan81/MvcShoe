@@ -99,7 +99,7 @@ namespace MvcShoe.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Brand,LaunchDate,Name,Type,Price")] Shoe shoe)
+        public async Task<IActionResult> Create([Bind("Id,Brand,LaunchDate,Name,Type,Price,Rating")] Shoe shoe)
         {
             if (ModelState.IsValid)
             {
@@ -131,7 +131,7 @@ namespace MvcShoe.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,LaunchDate,Name,Type,Price")] Shoe shoe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,LaunchDate,Name,Type,Price,Rating")] Shoe shoe)
         {
             if (id != shoe.Id)
             {
