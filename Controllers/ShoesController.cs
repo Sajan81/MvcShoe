@@ -24,19 +24,52 @@ namespace MvcShoe.Controllers
         //{
         //    return View(await _context.Shoe.ToListAsync());
         //}
-        public async Task<IActionResult> Index(string searchString)
+        //public async Task<IActionResult> Index(string searchString)
+        //{
+        //    var shoes = from m in _context.Shoe
+        //                select m;
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        shoes = shoes.Where(s => s.Name.Contains(searchString));
+        //    }
+
+        //    return View(await shoes.ToListAsync());
+        //}
+        // GET: Shoes
+        public async Task<IActionResult> Index(string shoeBrand, string searchString)
         {
+            // Use LINQ to get list of Brands.
+            IQueryable<string> brandQuery = from m in _context.Shoe
+                                            orderby m.Brand
+                                            select m.Brand;
+
             var shoes = from m in _context.Shoe
                         select m;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
                 shoes = shoes.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(await shoes.ToListAsync());
-        }
+            if (!string.IsNullOrEmpty(shoeBrand))
+            {
+                shoes = shoes.Where(x => x.Brand == shoeBrand);
+            }
 
+            var shoeBrandVM = new ShoeBrandViewModel
+            {
+                Brands = new SelectList(await brandQuery.Distinct().ToListAsync()),
+                Shoes = await shoes.ToListAsync()
+            };
+
+            return View(shoeBrandVM);
+        }
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;                  // Added The HTTP post method to provide the searchString to the Url
+        }
         // GET: Shoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
