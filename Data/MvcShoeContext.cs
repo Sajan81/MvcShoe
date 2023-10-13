@@ -11,5 +11,6 @@ namespace MvcShoe.Data
         }
 
         public DbSet<Shoe> Shoe { get; set; }
+
     }
 }

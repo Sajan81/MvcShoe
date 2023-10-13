@@ -20,9 +20,21 @@ namespace MvcShoe.Controllers
         }
 
         // GET: Shoes
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Shoe.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Shoe.ToListAsync());
+            var shoes = from m in _context.Shoe
+                        select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                shoes = shoes.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await shoes.ToListAsync());
         }
 
         // GET: Shoes/Details/5
