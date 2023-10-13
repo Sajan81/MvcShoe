@@ -84,3 +84,6 @@ Part 7
   I added the new field in the application name Rating.
   After that I updated the html files of the viwes and Updated the seedData to add the new values for the rating column. After saving everything i ran the commmand and it worked.
 i add the validation for all fileds
+
+finallyyyyyyyyyyyyyyyyyyyyyyyyyy
+ i have completed my assignmnet        finnaallyyyyyyyyyyy sfter to many tries i did it 
