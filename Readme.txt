@@ -78,3 +78,8 @@ so part 6 is kind of short and it finished
 Part 7
  I added the SearchBar in my Application. In my shoecontroller.cs file i updated the index method to search by brand in it.
  Later I updated the index file of the View to show my search in the application. I updated the required code of the application.
+
+
+ PART 8 [Added the new field rating]
+  I added the new field in the application name Rating.
+  After that I updated the html files of the viwes and Updated the seedData to add the new values for the rating column. After saving everything i ran the commmand and it worked.
